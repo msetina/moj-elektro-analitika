@@ -1,0 +1,27 @@
+name: Static analysis
+
+on: ["push", "pull_request"]
+
+permissions:
+  actions: read
+  contents: read
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install --upgrade pip isort black
+      - name: Check import order
+        run: isort --profile black --line-length 80 --check moj_elektro_analitika*
+      - name: Run Black
+        run: black -S --line-length 80 --check moj_elektro_analitika*
+  mypy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: pip install --upgrade pip mypy aiohttp
+      - name: Run mypy
+        run: mypy moj_elektro_analitika
+    
