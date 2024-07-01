@@ -30,7 +30,7 @@ jobs:
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
       - name: Install build tools
-        run: pip install --upgrade build setuptools pip wheel swig                 
+        run: pip install --upgrade build setuptools pip wheel moj-elektro-v1                 
       - name: Build release artifacts
         run: python -m build
       - name: Record release artifact hashes
