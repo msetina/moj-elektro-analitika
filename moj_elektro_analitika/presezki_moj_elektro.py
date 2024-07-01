@@ -3,8 +3,9 @@ from datetime import date
 from logging import Logger
 
 import pandas as pd
-from moj_elektro_analitika.moj_elektro_readings_utils import calc_presezki
 from moj_elektro_v1 import MeterReadings
+
+from moj_elektro_analitika.moj_elektro_readings_utils import calc_presezki
 
 
 class PresezkiMojElektro(object):

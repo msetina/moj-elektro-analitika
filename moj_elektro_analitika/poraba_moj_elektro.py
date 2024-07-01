@@ -3,10 +3,11 @@ from datetime import date
 from logging import Logger
 
 import pandas as pd
+from moj_elektro_v1 import MeterReadings
+
 from moj_elektro_analitika.moj_elektro_readings_utils import (
     calc_poraba_over_slots,
 )
-from moj_elektro_v1 import MeterReadings
 
 
 class PorabaMojElektro(object):
