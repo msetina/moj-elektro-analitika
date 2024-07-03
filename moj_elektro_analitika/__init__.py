@@ -10,3 +10,6 @@ from moj_elektro_analitika.presezki_moj_elektro import (
 from moj_elektro_analitika.racun_moj_elektro import (
     RacunMojElektro as RacunMojElektro,
 )
+from moj_elektro_analitika.buckets_poraba_moj_elektro import (
+    BucketsPorabaMojElektro as BucketsPorabaMojElektro,
+)

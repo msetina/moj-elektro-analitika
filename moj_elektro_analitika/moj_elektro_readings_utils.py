@@ -21,6 +21,25 @@ def calc_presezki(data: pd.DataFrame) -> pd.DataFrame:
     ]
 
 
+def calc_poraba_over_buckets(
+    data: pd.DataFrame, buckets: int | list[float]
+) -> pd.DataFrame:
+    data["buckets"] = pd.qcut(
+        x=data["P+"], q=buckets, labels=False, retbins=False
+    )
+    grouping = [
+        "Leto",
+        "Mesec",
+        "buckets",
+    ]
+    return data.groupby(grouping).agg(
+        {
+            "A+": ["sum", "count"],
+            "P+": ["max", "min", "mean"],
+        }
+    )
+
+
 def calc_dogovorjena_moc(data: pd.DataFrame) -> pd.Series:
     return data.groupby(
         [
