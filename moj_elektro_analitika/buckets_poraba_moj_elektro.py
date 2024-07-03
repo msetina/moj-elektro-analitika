@@ -37,7 +37,7 @@ class BucketsPorabaMojElektro(object):
                 ):
                     rdngs_lst.extend(rdngs)
                 data_ld = pd.DataFrame(rdngs_lst)
-                pt = calc_poraba_over_buckets(data_ld, buckets)
+                pt = calc_poraba_over_buckets(data_ld, "P+", buckets)
                 return_vals = pt.to_dict("records")
                 for i, ax in enumerate(
                     pt.axes[0].to_frame().to_dict("records")

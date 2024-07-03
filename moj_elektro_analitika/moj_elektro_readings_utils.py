@@ -22,10 +22,14 @@ def calc_presezki(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def calc_poraba_over_buckets(
-    data: pd.DataFrame, buckets: int | list[float]
+    data: pd.DataFrame, data_name: str, buckets: int | list[float]
 ) -> pd.DataFrame:
     data["buckets"] = pd.qcut(
-        x=data["P+"], q=buckets, labels=False, retbins=False
+        x=data[data_name],
+        q=buckets,
+        labels=False,
+        retbins=False,
+        duplicates="drop",
     )
     grouping = [
         "Leto",
