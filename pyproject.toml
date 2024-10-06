@@ -29,9 +29,9 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [   
-    "moj-elektro-v1>=0.0.1"
+    "moj-elektro-v1>=0.0.2"
 ]
-version = "0.0.1"
+version = "0.0.2"
 
 [project.readme]
 file = "README.rst"
