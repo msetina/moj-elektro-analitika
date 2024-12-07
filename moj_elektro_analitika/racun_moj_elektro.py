@@ -1,6 +1,5 @@
 from collections.abc import Iterable
 from datetime import date
-from json import load
 from logging import Logger
 
 import pandas as pd
@@ -168,11 +167,8 @@ class RacunMojElektro(object):
             return None
 
     async def __call__(
-        self, api_key: str, EIMM: str, frm_d: date, to_d: date, conf_name: str
+        self, api_key: str, EIMM: str, frm_d: date, to_d: date, cfgs: dict
     ):
-        cfgs = None
-        with open(conf_name) as fd:
-            cfgs = load(fd)
 
         try:
             async with MeterReadings.get_session() as session:
