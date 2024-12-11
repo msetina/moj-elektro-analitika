@@ -14,9 +14,14 @@ class DogovorjenaMocMojElektro(object):
     def __init__(self, logger: Logger) -> None:
         self._logger = logger
         self.__iter_data: Iterable | None = None
+        self.__error: BaseException | None = None
+
+    def get_error(self):
+        return self.__error
 
     async def __call__(self, api_key: str, EIMM: str, frm_d: date, to_d: date):
         try:
+            self.__error = None
             async with MeterReadings.get_session() as session:
                 rdngs_lst = []
                 async for rdngs in MeterReadings.generate_readings(
@@ -35,6 +40,7 @@ class DogovorjenaMocMojElektro(object):
                 self.__iter_data = iter([dog_moc.to_dict()])
 
         except Exception as e:
+            self.__error = e
             self._logger.error(f"Prišlo je do napake: {e}")
             self.__iter_data = None
         return self
